@@ -8,7 +8,6 @@ const config = require('dotenv').config()
 
 
 const login = require('./routes/login')
-const logout = require('./routes/logout')
 const signUp = require('./routes/signup')
 const diaryNote = require('./routes/diaryNote')
 const app = express()
