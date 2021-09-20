@@ -1,19 +1,8 @@
 const express = require('express')
 const router = express.Router();
-const userScehma = require('../models/user');
+const { signUpController } = require('../controllers/signUpController')
+const { signUpValidation } = require('../middlewares/signupValidation')
 
-router.post('/',async(req,res)=>{
-    try{
-        console.log(req.body)
-        let user  = new userScehma({
-            ...req.body
-        })
-        await user.save()
-        res.send({status:'user created successfully'})
-    }
-    catch(error){
-        console.log(error);
-    } 
-})
+router.post('/',signUpValidation,signUpController)
 
 module.exports = router;
