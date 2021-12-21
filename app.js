@@ -29,6 +29,10 @@ app.use(sessions({
 }))
 app.use(logger('dev'))
 app.use(cors())
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    next();
+  });
 //mongoose connection
 const connectionString = 'mongodb+srv://'+process.env.DB_NAME+':'+process.env.DB_PASSWORD+''+'@cluster0.zn0tq.mongodb.net/DiaryApp'
 mongoose.connect(connectionString,{useNewUrlParser: true, useUnifiedTopology: true})
